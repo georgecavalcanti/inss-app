@@ -1,0 +1,5 @@
+CREATE USER inssapp;
+ALTER USER inssapp WITH SUPERUSER;
+ALTER USER inssapp WITH PASSWORD 'inssapp';
+ALTER USER postgres WITH PASSWORD 'inssapp';
+
