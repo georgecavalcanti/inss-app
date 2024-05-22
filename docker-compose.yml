@@ -41,7 +41,7 @@ services:
     environment:
       RAILS_ENV: ${RAILS_ENV}
     entrypoint: ./entrypoints/sidekiq-entrypoint.sh
-  
+
 volumes:
   gem_cache:
   db_data:
