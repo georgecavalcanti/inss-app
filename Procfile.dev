@@ -2,4 +2,3 @@ web: env RUBY_DEBUG_OPEN=true bin/rails server
 js: yarn build --watch
 css: yarn watch:css
 database: docker-compose up database
-redis: docker-compose up redis

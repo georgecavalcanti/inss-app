@@ -15,7 +15,7 @@ user.update(
 
 Faker::Config.locale = 'pt-BR'
 
-10.times do |i|
+100.times do |i|
 	salary = rand(1400...10000)
 	discount = CalculateInss.new(salary).result
 

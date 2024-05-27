@@ -13,7 +13,12 @@ class EmployeesController < ApplicationController
       Employee.where("salary > 7786.02").count
     ]
 
-    @employees = Employee.order(created_at: :desc).limit(5).page(params[:page])
+    @employees = Employee.order(created_at: :desc).page(params[:page])
+
+    respond_to do |format|
+      format.html
+      format.csv { send_data Employee.all.to_csv, filename: "employees-#{Time.now}.csv" } 
+    end
   end
 
   # GET /employees/1 or /employees/1.json
