@@ -8,7 +8,7 @@ RSpec.describe 'employees/show', type: :view do
                         name: 'Name',
                         address: 'Address',
                         address_number: 'Address Number',
-                        address_neigborhood: 'Address Neigborhood',
+                        address_neighborhood: 'Address Neighborhood',
                         address_city: 'Address City',
                         address_state: 'Address State',
                         address_zip_code: 'Address Zip Code',
@@ -22,7 +22,7 @@ RSpec.describe 'employees/show', type: :view do
     expect(rendered).to match(/Name/)
     expect(rendered).to match(/Address/)
     expect(rendered).to match(/Address Number/)
-    expect(rendered).to match(/Address Neigborhood/)
+    expect(rendered).to match(/Address Neighborhood/)
     expect(rendered).to match(/Address City/)
     expect(rendered).to match(/Address State/)
     expect(rendered).to match(/Address Zip Code/)

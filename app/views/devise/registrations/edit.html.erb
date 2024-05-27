@@ -1,0 +1,49 @@
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="container w-50 card d-flex flex-row my-3 ps-0 justify-content-center">
+    <div class="w-50 ms-5 d-flex flex-column p-4">
+      <div class="row mb-3 mt-3">
+         <%= f.label :full_name, 'Nome', class:"col-sm-4 col-form-label fw-bold" %>
+         <div class="col-sm-8">
+            <%= f.text_field :full_name, placeholder:"Full Name", autofocus: true, class:"form-control" %>
+         </div>
+      </div>
+
+      <div class="row mb-3">
+        <%= f.label :email, 'Email', class:"col-sm-4 col-form-label fw-bold" %>
+        <div class="col-sm-8">
+          <%= f.email_field :email, autofocus: true, class:"form-control" %>
+        </div>
+      </div>
+
+       <div class="row mb-3">
+        <%= f.label :new_password, 'Nova Senha', class:"col-sm-4 col-form-label fw-bold" %>
+        <div class="col-sm-8">
+          <%= f.password_field :password, placeholder:"Nova Senha", autofocus: true, class:"form-control" %>
+          <small class="text-muted">deixe em branco se não quiser alterar.</small>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <%= f.label :new_password_confirmation, 'Confirmar Nova Senha', class:"col-sm-4 col-form-label fw-bold" %>
+        <div class="col-sm-8">
+          <%= f.password_field :password_confirmation, placeholder:"Confirmar Nova Senha", autofocus: true, class:"form-control" %>
+        </div>
+      </div>
+
+
+      <div class="row mb-3">
+        <%= f.label :current_password, 'Senha Atual', class:"col-sm-4 col-form-label fw-bold" %>
+        <div class="col-sm-8">
+          <%= f.password_field :current_password, placeholder:"Senha Atual", autofocus: true, class:"form-control" %>
+          <small class="text-muted">Senha corrente é necessário para edição.</small>
+        </div>
+      </div>
+
+      <div class="d-flex mb-2 justify-content-center">
+        <%= f.submit "Atualizar", class:"btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+<% end %>

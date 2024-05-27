@@ -1,7 +1,7 @@
-<%= form_with(model: employee) do |form| %>
+<%= form_with(model: employee, html: { data: { controller: "form-employee" } }) do |form| %>
   <% if employee.errors.any? %>
     <div style="color: red">
-      <h2><%= pluralize(employee.errors.count, "error") %> prohibited this employee from being saved:</h2>
+      <h2><%= pluralize(employee.errors.count, "error") %> Não foi possível criar o funcionário:</h2>
 
       <ul>
         <% employee.errors.each do |error| %>
@@ -11,57 +11,65 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+  <div class="row mb-2">
+    <div class="col">
+      <%= form.label :name, 'Nome', style: "display: hidde" %>
+      <%= form.text_field :name, placeholder:"Nome Completo", class: "form-control" %>
+    </div>
   </div>
-
-  <div>
-    <%= form.label :born_date, style: "display: block" %>
-    <%= form.date_field :born_date %>
+  <div class="row mb-2">
+    <div class="col-2">
+      <%= form.label :document, 'CPF', style: "display: block" %>
+      <%= form.text_field :document, placeholder: '000.000.000-00', class: "form-control", data: { masks_target: 'cpf' } %>
+    </div>
+    <div class="col-2">
+      <%= form.label :birthdate, 'Data de Nascimento', style: "display: block" %>
+      <%= form.date_field :birthdate, class: "form-control" %>
+    </div>
+    <div class="col-2">
+      <%= form.label :phone_number, 'Celular', style: "display: block" %>
+      <%= form.text_field :phone_number, placeholder: '(00) 99999-9999', class: "form-control", data: { masks_target: 'phone' } %>
+    </div>
   </div>
-
-  <div>
-    <%= form.label :address, style: "display: block" %>
-    <%= form.text_field :address %>
+  <div class="row mb-2">
+    <div class="col">
+      <%= form.label :address, 'Endereço', style: "display: block" %>
+      <%= form.text_field :address, autofocus: true, class:"form-control" %>
+    </div>
+    <div class="col-1">
+      <%= form.label :address_number, 'Número', style: "display: block" %>
+      <%= form.text_field :address_number, autofocus: true, class:"form-control" %>
+    </div>
+    <div class="col-3">
+      <%= form.label :address_city, 'Cidade', style: "display: block" %>
+      <%= form.text_field :address_city, autofocus: true, class:"form-control" %>
+    </div>
+    <div class="col-3">
+      <%= form.label :address_state, 'Estado', style: "display: block" %>
+      <%= form.text_field :address_state, autofocus: true, class:"form-control" %>
+    </div>
   </div>
-
-  <div>
-    <%= form.label :address_number, style: "display: block" %>
-    <%= form.text_field :address_number %>
+  <div class='row mb-2'>
+    <div class="col-2">
+      <%= form.label :address_zip_code, 'CEP', style: "display: block" %>
+      <%= form.text_field :address_zip_code, placeholder: '00000-000', autofocus: true, class:"form-control", data: { masks_target: 'zip_code' } %>
+    </div>
+    <div class="col-3">
+      <%= form.label :address_neighborhood, 'Bairro', style: "display: block" %>
+      <%= form.text_field :address_neighborhood, autofocus: true, class:"form-control" %>
+    </div>
   </div>
-
-  <div>
-    <%= form.label :address_neigborhood, style: "display: block" %>
-    <%= form.text_field :address_neigborhood %>
+  <div class='row mb-3'>
+    <div class="col-3">
+      <%= form.label :salary, 'Salário', style: "display: block" %>
+      <%= form.number_field :salary, autofocus: true, class:"form-control", data: { form_employee_target: 'salary', action: "change->form-employee#updateDiscountInss" } %>
+    </div>
+    <div class="col-2">
+      <%= form.label :discount_inss, 'Desconto INSS', style: "display: block" %>
+      <%= form.text_field :discount_inss, autofocus: true, class:"form-control", readonly: true, data: { form_employee_target: 'discountInss' } %>
+    </div>
   </div>
-
-  <div>
-    <%= form.label :address_city, style: "display: block" %>
-    <%= form.text_field :address_city %>
-  </div>
-
-  <div>
-    <%= form.label :address_state, style: "display: block" %>
-    <%= form.text_field :address_state %>
-  </div>
-
-  <div>
-    <%= form.label :address_zip_code, style: "display: block" %>
-    <%= form.text_field :address_zip_code %>
-  </div>
-
-  <div>
-    <%= form.label :phone_number, style: "display: block" %>
-    <%= form.text_field :phone_number %>
-  </div>
-
-  <div>
-    <%= form.label :salary, style: "display: block" %>
-    <%= form.text_field :salary %>
-  </div>
-
-  <div>
-    <%= form.submit %>
+  <div class="mt-3">
+    <%= form.submit 'Salvar', class: "btn btn-primary text-white" %>
   </div>
 <% end %>

@@ -9,7 +9,7 @@ RSpec.describe 'employees/index', type: :view do
                name: 'Name',
                address: 'Address',
                address_number: 'Address Number',
-               address_neigborhood: 'Address Neigborhood',
+               address_neighborhood: 'Address Neighborhood',
                address_city: 'Address City',
                address_state: 'Address State',
                address_zip_code: 'Address Zip Code',
@@ -20,7 +20,7 @@ RSpec.describe 'employees/index', type: :view do
                name: 'Name',
                address: 'Address',
                address_number: 'Address Number',
-               address_neigborhood: 'Address Neigborhood',
+               address_neighborhood: 'Address Neighborhood',
                address_city: 'Address City',
                address_state: 'Address State',
                address_zip_code: 'Address Zip Code',
@@ -36,7 +36,7 @@ RSpec.describe 'employees/index', type: :view do
     assert_select cell_selector, text: Regexp.new('Name'.to_s), count: 2
     assert_select cell_selector, text: Regexp.new('Address'.to_s), count: 2
     assert_select cell_selector, text: Regexp.new('Address Number'.to_s), count: 2
-    assert_select cell_selector, text: Regexp.new('Address Neigborhood'.to_s), count: 2
+    assert_select cell_selector, text: Regexp.new('Address Neighborhood'.to_s), count: 2
     assert_select cell_selector, text: Regexp.new('Address City'.to_s), count: 2
     assert_select cell_selector, text: Regexp.new('Address State'.to_s), count: 2
     assert_select cell_selector, text: Regexp.new('Address Zip Code'.to_s), count: 2

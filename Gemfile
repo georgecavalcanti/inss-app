@@ -81,3 +81,5 @@ group :development do
   gem 'faker', '~> 3.3', '>= 3.3.1'
   gem 'rspec-rails', '~> 6.1', '>= 6.1.2'
 end
+
+gem 'devise', '~> 4.9'

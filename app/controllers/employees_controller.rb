@@ -5,7 +5,15 @@ class EmployeesController < ApplicationController
 
   # GET /employees or /employees.json
   def index
-    @employees = Employee.all
+    @employees_count = [
+      Employee.where("salary <= 1412").count,
+      Employee.where("salary > 1412 AND salary <= 2668.68").count,
+      Employee.where("salary > 2668.68 AND salary <= 4000.03").count,
+      Employee.where("salary > 4000.03 AND salary <= 7786.02").count,
+      Employee.where("salary > 7786.02").count
+    ]
+
+    @employees = Employee.order(created_at: :desc).limit(5).page(params[:page])
   end
 
   # GET /employees/1 or /employees/1.json
@@ -25,7 +33,7 @@ class EmployeesController < ApplicationController
 
     respond_to do |format|
       if @employee.save
-        format.html { redirect_to employee_url(@employee), notice: 'Employee was successfully created.' }
+        format.html { redirect_to employees_url, notice: 'Funcionário criado com sucesso.' }
         format.json { render :show, status: :created, location: @employee }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +46,7 @@ class EmployeesController < ApplicationController
   def update
     respond_to do |format|
       if @employee.update(employee_params)
-        format.html { redirect_to employee_url(@employee), notice: 'Employee was successfully updated.' }
+        format.html { redirect_to employees_url, notice: 'Funcionário Atualizado.' }
         format.json { render :show, status: :ok, location: @employee }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,7 +60,7 @@ class EmployeesController < ApplicationController
     @employee.destroy!
 
     respond_to do |format|
-      format.html { redirect_to employees_url, notice: 'Employee was successfully destroyed.' }
+      format.html { redirect_to employees_url, notice: 'Funcionário removido com sucesso.' }
       format.json { head :no_content }
     end
   end
@@ -66,7 +74,10 @@ class EmployeesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def employee_params
-    params.require(:employee).permit(:name, :born_date, :address, :address_number, :address_neigborhood,
-                                     :address_city, :address_state, :address_zip_code, :phone_number, :salary)
+    params.require(:employee).permit(
+      :name, :birthdate, :address, :address_number, :address_neighborhood,
+      :address_city, :address_state, :address_zip_code, :phone_number, :salary, :discount_inss,
+      :document
+    )
   end
 end

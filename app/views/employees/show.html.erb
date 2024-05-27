@@ -3,8 +3,8 @@
 <%= render @employee %>
 
 <div>
-  <%= link_to "Edit this employee", edit_employee_path(@employee) %> |
-  <%= link_to "Back to employees", employees_path %>
+  <%= link_to "Editar Funcionário", edit_employee_path(@employee) %> |
+  <%= link_to "Voltar", employees_path %>
 
-  <%= button_to "Destroy this employee", @employee, method: :delete %>
+  <%= button_to "Deletar Funcionário", @employee, method: :delete %>
 </div>

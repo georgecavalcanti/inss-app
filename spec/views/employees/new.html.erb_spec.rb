@@ -8,7 +8,7 @@ RSpec.describe 'employees/new', type: :view do
                         name: 'MyString',
                         address: 'MyString',
                         address_number: 'MyString',
-                        address_neigborhood: 'MyString',
+                        address_neighborhood: 'MyString',
                         address_city: 'MyString',
                         address_state: 'MyString',
                         address_zip_code: 'MyString',
@@ -27,7 +27,7 @@ RSpec.describe 'employees/new', type: :view do
 
       assert_select 'input[name=?]', 'employee[address_number]'
 
-      assert_select 'input[name=?]', 'employee[address_neigborhood]'
+      assert_select 'input[name=?]', 'employee[address_neighborhood]'
 
       assert_select 'input[name=?]', 'employee[address_city]'
 
