@@ -1,24 +1,64 @@
-# README
+# Iniciando o sistema `desconto inss`
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Este arquivo README fornece instruções sobre como rodar o sistema Desconto INSS localmente.
 
-Things you may want to cover:
+## Pré-requisitos
 
-* Ruby version
+Certifique-se de ter o Docker, Docker-compose, instalado na sua máquina.
 
-* System dependencies
+## Arquivo `.env`
 
-* Configuration
+Arquivo `.env` proposto:
 
-* Database creation
+```
+DATABASE_NAME=inssapp
+DATABASE_USER=inssapp
+DATABASE_PASSWORD=inssapp
+DATABASE_HOST=database
+DATABASE_PORT=5432
+RAILS_ENV=development
+NODE_ENV=development
+RAILS_ENV=development
+POSTGRES_USER=inssapp
+POSTGRES_PASSWORD=inssapp
+REDIS_HOST=redis
+```
 
-* Database initialization
+## Iniciando o Contêiner Docker
 
-* How to run the test suite
+Execute o seguinte comando no terminal para iniciar o contêiner Docker:
 
-* Services (job queues, cache servers, search engines, etc.)
+```
+docker-compose up
+```
 
-* Deployment instructions
+Criando as dependências de banco de dados e dados iniciais:
 
-* ...
+```
+docker-compose exec app rake db:create
+docker-compose exec app rake db:migrate
+docker-compose exec app rake db:seed
+```
+
+## Dados iniciais e Login default criado no seed
+
+Agora você já pode acessar a tela do sistema acessando no seu navegador:
+
+```
+localhost:3000
+```
+
+Login e senha criados no `seed`:
+
+```
+	{
+		email: 'desafio@exemplo.com',
+		password: 'DesafioDojo'
+	}
+```
+
+Para acessar o sistema em ambiente de produção para verificar a estrutura e rodando em tempo real, você pode acessar:
+
+`https://desconto-inss-f04b1ccacd08.herokuapp.com`
+
+usando o mesmo login e senha do arquivo `seed`.
