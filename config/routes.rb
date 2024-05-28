@@ -5,4 +5,6 @@ Rails.application.routes.draw do
   root 'employees#index'
 
   resources :employees
+
+  get 'employees_chart', to: 'employees#chart'
 end

@@ -1,11 +1,29 @@
 import { Controller } from "@hotwired/stimulus"
+import { FetchRequest } from "@rails/request.js"
 
 export default class extends Controller {
   static targets = ['chartEmployeesCount']
 
-  canvasEmployeesCountContext() { return this.chartEmployeesCountTarget.getContext('2d'); }
+  canvasEmployeesCountContext() { 
+    return this.chartEmployeesCountTarget.getContext('2d');
+  }
+
+  async fetchContentChart() {
+    const request = new FetchRequest('get', '/employees_chart')
+    const response = await request.perform();
+
+    if (response.ok) {
+      const body = await response.text;
+
+      return JSON.parse(body);
+    }
+
+    return []
+  }
   
-  connect() {
+  async connect() {
+    const dataChart = await this.fetchContentChart();
+
     new Chart(this.canvasEmployeesCountContext(), {
       type: 'bar',
       data: {
@@ -13,7 +31,7 @@ export default class extends Controller {
         datasets: [{
           axis: 'y',
           label: 'Quantidade de Funcionários',
-          data: JSON.parse(document.querySelector('[data-employees-count]').dataset.employeesCount),
+          data: dataChart,
           fill: false,
           backgroundColor: [
             'rgba(255, 99, 132, 0.2)',

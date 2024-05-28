@@ -1,8 +1,7 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
   <div class="container w-50 card d-flex flex-row my-3 ps-0 justify-content-center">
     <div class="w-50 ms-5 d-flex flex-column p-4">
+      <%= render "devise/shared/error_messages", resource: resource %>
       <div class="row mb-3 mt-3">
          <%= f.label :full_name, 'Nome', class:"col-sm-4 col-form-label fw-bold" %>
          <div class="col-sm-8">

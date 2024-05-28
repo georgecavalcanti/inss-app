@@ -3,16 +3,20 @@
 class EmployeesController < ApplicationController
   before_action :set_employee, only: %i[show edit update destroy]
 
-  # GET /employees or /employees.json
-  def index
+  def chart
     @employees_count = [
-      Employee.where("salary <= 1412").count,
-      Employee.where("salary > 1412 AND salary <= 2668.68").count,
-      Employee.where("salary > 2668.68 AND salary <= 4000.03").count,
-      Employee.where("salary > 4000.03 AND salary <= 7786.02").count,
-      Employee.where("salary > 7786.02").count
+      Employee.where('salary <= 1412').count,
+      Employee.where('salary > 1412 AND salary <= 2668.68').count,
+      Employee.where('salary > 2668.68 AND salary <= 4000.03').count,
+      Employee.where('salary > 4000.03 AND salary <= 7786.02').count,
+      Employee.where('salary > 7786.02').count
     ]
 
+    render json: @employees_count, status: :ok
+  end
+
+  # GET /employees or /employees.json
+  def index
     @employees = Employee.order(created_at: :desc).page(params[:page])
 
     respond_to do |format|
