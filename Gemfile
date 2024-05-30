@@ -78,8 +78,9 @@ group :development do
   gem 'bullet'
   gem 'capybara', '~> 3.40'
   gem 'database_cleaner', '~> 2.0', '>= 2.0.2'
-  gem 'rspec-rails', '~> 6.1', '>= 6.1.2'
   gem 'faker', '~> 3.3', '>= 3.3.1'
+  gem 'factory_bot_rails'
+  gem 'rspec-rails', '~> 6.1', '>= 6.1.2'
 end
 
 gem 'devise', '~> 4.9'

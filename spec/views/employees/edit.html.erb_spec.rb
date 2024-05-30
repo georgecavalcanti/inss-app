@@ -3,19 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe 'employees/edit', type: :view do
-  let(:employee) do
-    Employee.create!(
-      name: 'MyString',
-      address: 'MyString',
-      address_number: 'MyString',
-      address_neighborhood: 'MyString',
-      address_city: 'MyString',
-      address_state: 'MyString',
-      address_zip_code: 'MyString',
-      phone_number: 'MyString',
-      salary: '9.99'
-    )
-  end
+  let(:employee) { FactoryBot.create(:employee) }
 
   before(:each) do
     assign(:employee, employee)

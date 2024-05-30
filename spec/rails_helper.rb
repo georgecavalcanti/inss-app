@@ -70,6 +70,8 @@ RSpec.configure do |config|
 
   config.before(:suite) do
     InssApp::Application.load_tasks
+
+    ApplicationController.allow_forgery_protection = false
   end
 
   #config bullet
@@ -103,4 +105,5 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+  config.include Devise::Test::IntegrationHelpers, type: :request
 end

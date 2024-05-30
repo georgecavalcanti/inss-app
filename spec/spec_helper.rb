@@ -14,7 +14,10 @@
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 
+require 'faker'
+
 RSpec.configure do |config|
+  Faker::Config.locale = 'pt-BR'
 
   config.before(:all) do
     Rails.cache.clear

@@ -14,7 +14,7 @@
   <div class="row mb-2">
     <div class="col">
       <%= form.label :name, 'Nome', style: "display: hidde" %>
-      <%= form.text_field :name, placeholder:"Nome Completo", class: "form-control" %>
+      <%= form.text_field :name, autofocus: true, required: true, placeholder:"Nome Completo", class: "form-control" %>
     </div>
   </div>
   <div class="row mb-2">
@@ -34,39 +34,39 @@
   <div class="row mb-2">
     <div class="col">
       <%= form.label :address, 'Endereço', style: "display: block" %>
-      <%= form.text_field :address, autofocus: true, class:"form-control" %>
+      <%= form.text_field :address, class:"form-control" %>
     </div>
     <div class="col-1">
       <%= form.label :address_number, 'Número', style: "display: block" %>
-      <%= form.text_field :address_number, autofocus: true, class:"form-control" %>
+      <%= form.text_field :address_number, class:"form-control" %>
     </div>
     <div class="col-3">
       <%= form.label :address_city, 'Cidade', style: "display: block" %>
-      <%= form.text_field :address_city, autofocus: true, class:"form-control" %>
+      <%= form.text_field :address_city, class:"form-control" %>
     </div>
     <div class="col-3">
       <%= form.label :address_state, 'Estado', style: "display: block" %>
-      <%= form.text_field :address_state, autofocus: true, class:"form-control" %>
+      <%= form.text_field :address_state, class:"form-control" %>
     </div>
   </div>
   <div class='row mb-2'>
     <div class="col-2">
       <%= form.label :address_zip_code, 'CEP', style: "display: block" %>
-      <%= form.text_field :address_zip_code, placeholder: '00000-000', autofocus: true, class:"form-control", data: { masks_target: 'zip_code' } %>
+      <%= form.text_field :address_zip_code, placeholder: '00000-000', class:"form-control", data: { masks_target: 'zip_code' } %>
     </div>
     <div class="col-3">
       <%= form.label :address_neighborhood, 'Bairro', style: "display: block" %>
-      <%= form.text_field :address_neighborhood, autofocus: true, class:"form-control" %>
+      <%= form.text_field :address_neighborhood, class:"form-control" %>
     </div>
   </div>
   <div class='row mb-3'>
     <div class="col-3">
       <%= form.label :salary, 'Salário', style: "display: block" %>
-      <%= form.number_field :salary, autofocus: true, class:"form-control", data: { form_employee_target: 'salary', action: "change->form-employee#updateDiscountInss" } %>
+      <%= form.number_field :salary, required: true, class:"form-control", data: { form_employee_target: 'salary', action: "change->form-employee#updateDiscountInss" } %>
     </div>
     <div class="col-2">
       <%= form.label :discount_inss, 'Desconto INSS', style: "display: block" %>
-      <%= form.text_field :discount_inss, autofocus: true, class:"form-control", readonly: true, data: { form_employee_target: 'discountInss' } %>
+      <%= form.text_field :discount_inss, class:"form-control", readonly: true, data: { form_employee_target: 'discountInss' } %>
     </div>
   </div>
   <div class="mt-3">
