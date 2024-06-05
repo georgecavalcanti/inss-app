@@ -59,6 +59,6 @@ Login e senha criados no `seed`:
 
 Para acessar o sistema em ambiente de produção para verificar a estrutura e rodando em tempo real, você pode acessar:
 
-`https://desconto-inss-f04b1ccacd08.herokuapp.com`
+`https://desconto-inss-0a67bf70d9dd.herokuapp.com`
 
 usando o mesmo login e senha do arquivo `seed`.
