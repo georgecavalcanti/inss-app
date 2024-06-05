@@ -21,28 +21,28 @@ export default class extends Controller {
 
   updateDiscountInss() {
     const salariesLimit = [
-      { limit: 1412.00, aliquota: 0.075 },
-      { limit: 2666.68, aliquota: 0.09 },
-      { limit: 4000.03, aliquota: 0.12 },
-      { limit: 7786.02, aliquota: 0.14 }
+      { limit: 1412.00, rate: 0.075 },
+      { limit: 2666.68, rate: 0.09 },
+      { limit: 4000.03, rate: 0.12 },
+      { limit: 7786.02, rate: 0.14 }
     ];
 
     let discount = 0;
     let auxSalary = this.salary();
 
     for (let i = 0; i < salariesLimit.length; i++) {
-      const { limit, aliquota } = salariesLimit[i];
+      const { limit, rate } = salariesLimit[i];
       const lastLimit = i === 0 ? 0 : salariesLimit[i - 1].limit;
 
       if (this.salary() > lastLimit) {
         const base = Math.min(auxSalary, limit - lastLimit);
-        discount += base * aliquota;
+        discount += base * rate;
         auxSalary -= base;
       }
     }
 
     if (this.salary() > salariesLimit[salariesLimit.length - 1].limit) {
-      discount += (this.salary() - salariesLimit[salariesLimit.length - 1].limit) * salariesLimit[salariesLimit.length - 1].aliquota;
+      discount += (this.salary() - salariesLimit[salariesLimit.length - 1].limit) * salariesLimit[salariesLimit.length - 1].rate;
     }
 
     this.discountInssTarget.value = discount.toFixed(2);
